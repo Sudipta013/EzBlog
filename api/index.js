@@ -25,3 +25,14 @@ app.listen(3000, () =>{
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth',authRoutes)
+
+//middleware which gives us 4 things : err-error from input , next - used when go to next middleware
+app.use((err,req, res,next) => {
+    const statusCode = err.statusCode || 500; //if no statuscode then 500 or else err .. cant send a err without a status code
+    const message = err.message || 'Internal Server Error';
+    res.status(statusCode).json({
+        success:false,
+        statusCode,
+        message
+    });
+});
