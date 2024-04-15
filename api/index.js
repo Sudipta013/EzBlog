@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 dotenv.config();
@@ -24,7 +24,7 @@ app.listen(3000, () =>{
 });
 
 app.use('/api/user', userRoutes);
-app.use('/api/auth',authRoutes)
+app.use('/api/auth',authRoutes);
 
 //middleware which gives us 4 things : err-error from input , next - used when go to next middleware
 app.use((err,req, res,next) => {
