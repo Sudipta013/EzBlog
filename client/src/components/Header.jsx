@@ -31,7 +31,7 @@ export default function Header() {
                 <FaMoon></FaMoon>
             </Button>
 
-            {/* Header Profile Component  */}
+            {/* Header Profile Component with user data*/}
             {currentUser ? (
                 <Dropdown 
                     arrowIcon={false} 
