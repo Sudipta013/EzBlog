@@ -8,6 +8,7 @@ import 'react-circular-progressbar/dist/styles.css'
 import { updateStart, updateSuccess, updateFailure,deleteUserStart, deleteUserSuccess, deleteUserFailure, signoutSuccess} from '../redux/user/userSlice.js'
 import { useDispatch } from 'react-redux'
 import {HiOutlineExclamationCircle} from 'react-icons/hi'
+import {Link} from 'react-router-dom'
 
 
 export default function DashProfile() {
@@ -206,7 +207,16 @@ export default function DashProfile() {
         <TextInput type='text' id='username' placeholder='username' defaultValue={currentUser.username}onChange={handleChange}/>
         <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email}onChange={handleChange}/>
         <TextInput type='password' id='password' placeholder='password'onChange={handleChange}/>
-        <Button type = 'submit' gradientDuoTone='greenToBlue' outline>Update</Button>
+        <Button type ='submit' gradientDuoTone='greenToBlue' outline disabled={loading||imageFileUploading}>
+          {loading ? 'loading...':'Update'}
+        </Button>
+        {
+          currentUser.isAdmin && (
+            <Link to={'/create-post'}>
+              <Button type='button'gradientDuoTone='purpleToPink'className='w-full'>Create a post</Button>
+            </Link>
+          )
+        }
 
       </form>
 
